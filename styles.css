@@ -1,0 +1,170 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Roboto Mono", monospace;
+    
+}
+
+body{
+    /* min-height: 100vh; */
+    background-color: #F4DFC8;
+
+}
+/* navigation bar */
+.header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 0.5rem 5rem 0.5rem 5rem;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+
+}
+.header::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #ffff;
+    z-index: -1;
+}
+.header::after{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, #F4EAE0, transparent);
+    transition: 5s;
+}
+
+.header:hover::after{
+    left: 100%;
+}
+
+.logo{
+  
+    height: 3rem; /* Adjust the height as needed */
+}
+
+.navbar a{
+    font-size: 1.15rem;
+    color: #000000;
+    text-decoration: none;
+    font-weight: 500;
+    margin-left: 2.5rem;
+}
+
+#check{
+    display: none;
+}
+
+.icons{
+    position: absolute;
+    right: 5%;
+    font-size: 2rem;
+    color: #000000;
+    cursor: pointer;
+    display: none;
+    
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    /* padding: 10rem; */
+    background: #000000;
+}
+
+.text-div {
+    flex: 1;
+    padding: 10rem 0rem 0rem 8rem;
+    /* margin: 10rem 0rem 0rem 0rem; */
+    background-color: #f4f4f4;
+}
+
+.image-div {
+    flex: 1;
+    background-color: #e0e0e0;
+    text-align: center;
+    padding: 8rem 0rem 0rem 0rem;
+}
+
+.image-div img {
+    max-width: 100%;
+    height: auto;
+   
+}
+
+
+
+
+/* Breakpoint */
+
+@media(max-width: 992px){
+    .header{
+        padding: 0.5rem 4rem 0.5rem 4rem;
+    }
+
+}
+@media(max-width: 768px){
+    .icons{
+        display: inline-flex;
+    }
+    #check:checked~.icons #menu-icon{
+        display: none;
+    }
+    .icons #close-icon{
+        display: none;
+    }
+
+    #check:checked~.icons #close-icon{
+        display: block;
+    }
+
+    .navbar{
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        height: 0;
+        background: #ffffff;
+        overflow: hidden;
+        transition: .3s ease;
+    
+    }
+
+    #check:checked~.navbar{
+        height: 17.7rem;
+    }
+
+    .navbar a{
+        display: block;
+        font-size: 1.1rem;
+        margin: 1.5rem 0;
+        text-align: center;
+        transform: translateY(-50px);
+        opacity: 0;
+        transition: .3s ease;
+    }
+
+    #check:checked~.navbar a{
+        transform: translateY(0); 
+        opacity: 1;
+        transition-delay: calc(.15s * var(--i)); 
+    }
+
+    .container {
+        flex-direction: column;
+    }
+
+} 
